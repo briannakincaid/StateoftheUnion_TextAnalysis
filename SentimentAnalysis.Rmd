@@ -43,6 +43,8 @@ trump <- trump %>% unnest_tokens(word,text)
 trump_anger <- trump %>% 
   inner_join(nrc_anger) %>%
   count(word, sort = TRUE)
+
+trump_anger
 ```
 
 Here, we see some words that are clearly associated with anger, such as aggression and disgrace, but we also see some words that might have been taken out of context and may not actually be used in an angry context like deserve and powerful.
@@ -51,6 +53,8 @@ Here, we see some words that are clearly associated with anger, such as aggressi
 trump_anticipation <- trump %>% 
   inner_join(nrc_anticipation) %>%
   count(word, sort = TRUE)
+
+trump_anticipation
 ```
 
 There are not only more anticipation words, but there are also some anticipation words used more frequently, such as time and plan. This implies that Trump's agenda is filled with 
@@ -59,6 +63,8 @@ There are not only more anticipation words, but there are also some anticipation
 trump_joy <- trump %>% 
   inner_join(nrc_joy) %>%
   count(word, sort = TRUE)
+
+trump_joy
 ```
 
 Despite what the media has said about Trump so far during his presidency, his state of the union address was has more words associated with joy than words associated with anger. However, there are plenty of words here that may have been taken out of context, such as finally, create, and yearning.
@@ -116,6 +122,8 @@ nixon <- nixon %>% unnest_tokens(word,text)
 nixon_anger <- nixon %>% 
   inner_join(nrc_anger) %>%
   count(word, sort = TRUE)
+
+nixon_anger
 ```
 
 Simlar to Trump's state of the union address, there are not too many of Nixon's words associated with anger. Moreover, Nixon had way less words associated with anger than Trump in his State of the Union, which infers that Nixon had a more favorable outlook and attitude toward the US as well as leading the US to become a better nation.
@@ -124,6 +132,8 @@ Simlar to Trump's state of the union address, there are not too many of Nixon's 
 nixon_anticipation <- nixon %>% 
   inner_join(nrc_anticipation) %>%
   count(word, sort = TRUE)
+
+nixon_anticipation
 ```
 
 Like in Trump's address, Nixon's address has the word 'time' as the most frequently used word related to anticipation, but Nixon uses it even more than Trump, seventeen times to be exact, compared to nine times by Trump.
@@ -132,6 +142,8 @@ Like in Trump's address, Nixon's address has the word 'time' as the most frequen
 nixon_joy <- nixon %>% 
   inner_join(nrc_joy) %>%
   count(word, sort = TRUE)
+
+nixon_joy
 ```
 
 Although Trump may have used more words relating to joy, Nixon's most frequent joy word, namely peace, is used sixteen times in his speech, as opposed to Trump's most frequent word, finally, which is used eight times and may not have necessarily been used in such a positive context. Moreover, there are less words associated with joy that are used only once in Nixon's speech than in Trump's speech, further implying that Nixon approached leading the US in a more optimistic way.
