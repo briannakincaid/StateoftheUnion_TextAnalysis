@@ -1,6 +1,6 @@
 ---
 title: "Sentiment Analysis"
-author: "Kevin Chan, Brianna Kincaid, Lauren Vanvalkenburg"
+author: "Kevin Chan, Brianna Kincaid, Lauren VanValkenburg"
 date: "April 6, 2018"
 output: pdf_document
 ---
@@ -33,43 +33,33 @@ nrc_anticipation <- get_sentiments("nrc") %>%
   filter(sentiment == "anticipation")
 ```
 
-# Trump
-
 ## Now we look into Trump's State of the Union Address.
 ```{r}
 trump <- readtext("trump first state of the union.txt")
 trump <- trump %>% unnest_tokens(word,text)
 
-count(trump)
-
 trump_anger <- trump %>% 
   inner_join(nrc_anger) %>%
   count(word, sort = TRUE)
-
-trump_anger
 ```
 
-Here, we see some words that are clearly associated with anger, such as aggression and disgrace, but we also see some words that might have been taken out of context and may not actually be used in an angry context like deserve and powerful.
+### Here, we see some words that are clearly associated with anger, such as aggression and disgrace, but we also see some words that might have been taken out of context and may not actually be used in an angry context like deserve and powerful.
 
 ```{r}
 trump_anticipation <- trump %>% 
   inner_join(nrc_anticipation) %>%
   count(word, sort = TRUE)
-
-trump_anticipation
 ```
 
-There are not only more anticipation words, but there are also some anticipation words used more frequently, such as time and plan. This implies that Trump's agenda is filled with 
+### There are not only more anticipation words, but there are also some anticipation words used more frequently, such as time and plan. This implies that Trump's agenda is filled with 
 
 ```{r}
 trump_joy <- trump %>% 
   inner_join(nrc_joy) %>%
   count(word, sort = TRUE)
-
-trump_joy
 ```
 
-Despite what the media has said about Trump so far during his presidency, his state of the union address was has more words associated with joy than words associated with anger. However, there are plenty of words here that may have been taken out of context, such as finally, create, and yearning.
+### Despite what the media has said about Trump so far during his presidency, his state of the union address was has more words associated with joy than words associated with anger. However, there are plenty of words here that may have been taken out of context, such as finally, create, and yearning.
 
 ```{r}
 trump_bing <- trump %>%
@@ -90,7 +80,7 @@ trump_bing %>%
   coord_flip()
 ```
 
-Here, we see that there are many more negative words than positive, but the most frequently used positive word, great, is used more than the most frequently used negative word, which is dangerous. This implies that Trump sees the current condition of the US in a bad light and is not very optimistic about the US' potential future. Like in the previous sentiment analyses, some words may have been taken out of context like reform.
+### Here, we see that there are many more negative words than positive, but the most frequently used positive word, great, is used more than the most frequently used negative word, which is dangerous. This implies that Trump sees the current condition of the US in a bad light and is not very optimistic about the US' potential future. Like in the previous sentiment analyses, some words may have been taken out of context like reform.
 
 
 ## Wordcloud for Trump's State of the Union Address
@@ -112,7 +102,6 @@ trump %>%
   comparison.cloud(colors = c("gray20", "gray80"),
                    max.words = 100)
 ```
-# Nixon
 
 ## Nixon's State of the Union Address
 
@@ -120,36 +109,28 @@ trump %>%
 nixon <- readtext("nixon first state of the union.txt")
 nixon <- nixon %>% unnest_tokens(word,text)
 
-count(nixon)
-
 nixon_anger <- nixon %>% 
   inner_join(nrc_anger) %>%
   count(word, sort = TRUE)
-
-nixon_anger
 ```
 
-Simlar to Trump's state of the union address, there are not too many of Nixon's words associated with anger. Moreover, Nixon had way less words associated with anger than Trump in his State of the Union, which infers that Nixon had a more favorable outlook and attitude toward the US as well as leading the US to become a better nation.
+### Simlar to Trump's state of the union address, there are not too many of Nixon's words associated with anger. Moreover, Nixon had way less words associated with anger than Trump in his State of the Union, which infers that Nixon had a more favorable outlook and attitude toward the US as well as leading the US to become a better nation.
 
 ```{r}
 nixon_anticipation <- nixon %>% 
   inner_join(nrc_anticipation) %>%
   count(word, sort = TRUE)
-
-nixon_anticipation
 ```
 
-Like in Trump's address, Nixon's address has the word 'time' as the most frequently used word related to anticipation, but Nixon uses it even more than Trump, seventeen times to be exact, compared to nine times by Trump.
+### Like in Trump's address, Nixon's address has the word 'time' as the most frequently used word related to anticipation, but Nixon uses it even more than Trump, seventeen times to be exact, compared to nine times by Trump.
 
 ```{r}
 nixon_joy <- nixon %>% 
   inner_join(nrc_joy) %>%
   count(word, sort = TRUE)
-
-nixon_joy
 ```
 
-Although Trump may have used more words relating to joy, Nixon's most frequent joy word, namely peace, is used sixteen times in his speech, as opposed to Trump's most frequent word, finally, which is used eight times and may not have necessarily been used in such a positive context. Moreover, there are less words associated with joy that are used only once in Nixon's speech than in Trump's speech, further implying that Nixon approached leading the US in a more optimistic way.
+### Although Trump may have used more words relating to joy, Nixon's most frequent joy word, namely peace, is used sixteen times in his speech, as opposed to Trump's most frequent word, finally, which is used eight times and may not have necessarily been used in such a positive context. Moreover, there are less words associated with joy that are used only once in Nixon's speech than in Trump's speech, further implying that Nixon approached leading the US in a more optimistic way.
 
 ```{r}
 nixon_bing <- nixon %>%
@@ -170,7 +151,7 @@ nixon_bing %>%
   coord_flip()
 ```
 
-Unlike in Trump's State of the Union Address, where there were clearly more negative words used, Nixon's State of the Union Address has a relatively equal balance between positive and negative words. Therefore, we can infer that Nixon's agenda approached resolving the nation's issues with a more optimistic outlook, as opposed to Trump, who seems to really focus on the negative side of the nation's condition and has a little more pessimistic view on resolving the problems.
+### Unlike in Trump's State of the Union Address, where there were clearly more negative words used, Nixon's State of the Union Address has a relatively equal balance between positive and negative words. Therefore, we can infer that Nixon's agenda approached resolving the nation's issues with a more optimistic outlook, as opposed to Trump, who seems to really focus on the negative side of the nation's condition and has a little more pessimistic view on resolving the problems.
 
 ## Wordcloud for Nixon's State of the Union Address
 
