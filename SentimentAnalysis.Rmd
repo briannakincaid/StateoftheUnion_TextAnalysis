@@ -40,6 +40,8 @@ nrc_anticipation <- get_sentiments("nrc") %>%
 trump <- readtext("trump first state of the union.txt")
 trump <- trump %>% unnest_tokens(word,text)
 
+count(trump)
+
 trump_anger <- trump %>% 
   inner_join(nrc_anger) %>%
   count(word, sort = TRUE)
@@ -102,8 +104,6 @@ trump %>%
 
 ## Wordcloud comparing positive and negative words in Trump's State of the Union Address
 
-# Nixon
-
 ```{r}
 trump %>%
   inner_join(get_sentiments("bing")) %>%
@@ -112,12 +112,15 @@ trump %>%
   comparison.cloud(colors = c("gray20", "gray80"),
                    max.words = 100)
 ```
+# Nixon
 
 ## Nixon's State of the Union Address
 
 ```{r}
 nixon <- readtext("nixon first state of the union.txt")
 nixon <- nixon %>% unnest_tokens(word,text)
+
+count(nixon)
 
 nixon_anger <- nixon %>% 
   inner_join(nrc_anger) %>%
