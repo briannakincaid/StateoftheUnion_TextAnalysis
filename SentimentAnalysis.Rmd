@@ -1,6 +1,6 @@
 ---
 title: "Sentiment Analysis"
-author: "Kevin Chan"
+author: "Kevin Chan, Brianna Kincaid, Lauren Vanvalkenburg"
 date: "April 6, 2018"
 output: pdf_document
 ---
